@@ -1,29 +1,29 @@
-<form name="adventure" action="" method="post">
+<form name="adventure" action="https://httpbin.org/post" method="post">
   <fieldset>
     <div>
-      <label>Full name:</label>
+      <label>Your Name:</label>
       <input type="text" name="fullname">
     </div>
 
     <div>
-      <label>Email:</label>
+      <label>Email address</label>
       <input type="email" name="email">
     </div>
 
     <div>
-      <label>Password:</label>
+      <label>Entry key:</label>
       <input type="password" name="password">
     </div>
   </fieldset>
 
   <fieldset>
     <div>
-      <label>Adventure name:</label>
+      <label>Journey name:</label>
       <input type="text" name="adv-name" placeholder="Name this adventure">
     </div>
 
     <div>
-      <label>Type of bicycle:</label>
+      <label>Type of bike:</label>
       <select name="bike">
         <option value="road">Road</option>
         <option value="road">Mountain</option>
@@ -31,7 +31,7 @@
       </select>
     </div>
 
-    <div>    
+    <div>
       <label>Choose a date:</label>
       <input type="date" name="date">
     </div>
@@ -41,6 +41,6 @@
       I am prepared to lead this adventure.
     </div>
   </fieldset>
-  
+
   <button type="submit">Save this adventure</button>
 </form>
