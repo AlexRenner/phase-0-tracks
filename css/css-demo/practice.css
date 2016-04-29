@@ -1,0 +1,24 @@
+.contact-info {
+	font-size: .8em;
+}
+
+.job {
+	background-color: #e9e5dc;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	border-radius: 25px;
+	margin: 5px;
+}
+
+ul {
+	font-size: .8em;
+}
+
+.google:link {
+	color: green;
+}
+
+.featured {
+	background-color: #90EE90;
+}
