@@ -1,0 +1,19 @@
+Alex Renner 4.1
+
+Elevator Algorithm:
+- Evaluate current floor
+- Ask resident which floor they would like to go to
+- Store request
+- Find button for requested floor(s)
+- Press button for requested floor(s)
+- Announce floor as you drop off resident(s) in descending or ascending order
+- Start over when residents enter elevator
+
+Hunger algorithm
+- Listen for stomach rumbling
+- If rumbling present go to fridge
+	- Open fridge
+	- Take food
+	- Cook food
+	- Eat food
+- If not rumbling than re-access hunger in an hour
