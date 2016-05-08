@@ -5,11 +5,12 @@ def vampire_check
 
 	puts "What is your name?"
 	name = gets.chomp
-	puts ' '
 
 	if name.downcase == "drake cula" || name.downcase == "tu fang"
 		puts "Definitely a vampire!"
-		exit(0)
+		return
+	else
+		puts ' '
 	end
 
 	puts "How old are you?"
@@ -44,9 +45,10 @@ def vampire_check
 	def allergy_check
 		until $allergy == "done"
 			puts "Please list an allergy. If no other allergies please enter \"done\"."
-			allergy = gets.chomp.downcase
+			$allergy = gets.chomp.downcase
+			puts ' '
 			if $allergy == "sunshine"
-				puts "Definitely a vampire!"
+				break
 			end
 		end
 	end
@@ -55,7 +57,9 @@ def vampire_check
 
 	allergy_check
 
-	if age >= 90 && !garlic && !insurance
+	if $allergy == "sunshine"
+		puts "Probably a vampire."
+	elsif age >= 90 && !garlic && !insurance
 		puts "Definitely a vampire!"
 	elsif age >= 90 && !garlic || !insurance
 		puts "Almost certainly a vampire."
@@ -72,3 +76,5 @@ end
 employees.times do
 	vampire_check
 end
+
+abort("Actually, never mind! What do these questions have to do with anything? Let's all be friends.")
