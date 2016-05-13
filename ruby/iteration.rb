@@ -21,3 +21,11 @@ puts ' '
 dishes.each do |dish|
 	puts "The #{dish} is clean!"
 end
+
+puts ' '
+
+dish_count.each do |dish, quantity|
+	puts "All #{quantity} #{dish} are clean!"
+end
+
+puts ' '
