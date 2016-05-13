@@ -84,4 +84,21 @@ def find_the_a(string)
 end
 
 find_the_a(user_string)
+puts ' '
 # A method that removes items from a data structure until false
+no_creativity = {
+	"one" => 1,
+	"two" => 2,
+	"three" => 3,
+	"four" => 4,
+	"five" => 5,
+	"six" => 6
+}
+
+def no_small_numbers(hash)
+	hash.delete_if {|string, integer| integer <= 3}
+	p hash
+end
+
+no_small_numbers(no_creativity)
+puts ' '
