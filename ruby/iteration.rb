@@ -38,3 +38,50 @@ end
 puts ' '
 puts "After .map call:"
 p dishes
+puts ' '
+
+# A method that iterates throught items deleting per condition
+numbers = [1,2,3,4,5,6,7,8]
+p numbers
+
+def smaller_delete(array)
+	array.delete_if {|number| number < 5}
+	p array
+end
+
+smaller_delete(numbers)
+puts ' '
+
+# A method that filters a data structure for only items per condition
+numbers = [1,2,3,4,5,6,7,8]
+p numbers
+
+def only_evens(array)
+	array.each do |number|
+		if number % 2 == 0
+			p number
+		else
+			nil
+		end
+	end
+end
+
+only_evens(numbers)
+puts ' '
+# Another that filters a data structure for only items per condition
+puts "Type something puh-lease:"
+user_string = gets.chomp
+
+def find_the_a(string)
+	a_array = string.split(' ')
+	a_array.each do |word|
+		if word.include?("a")
+			p word
+		else
+			nil
+		end
+	end
+end
+
+find_the_a(user_string)
+# A method that removes items from a data structure until false
