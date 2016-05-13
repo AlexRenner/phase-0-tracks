@@ -29,3 +29,12 @@ dish_count.each do |dish, quantity|
 end
 
 puts ' '
+
+dishes.map! do |dish|
+	p dishes
+	"Clean #{dish}"
+end
+
+puts ' '
+puts "After .map call:"
+p dishes
