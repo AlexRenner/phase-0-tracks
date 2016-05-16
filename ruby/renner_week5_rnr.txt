@@ -1,0 +1,20 @@
+Alex Renner
+week 5 review and reflect
+
+1. Data structures are perfect for storing information in indexes(sp) or key-value pairs
+
+2. An array is a variable that contains data within an index.  Each element within an array is assigned a number (starting at 0) that is used to access the data
+
+3. Days of the week or Items in a collection (books = [title, another title, etc])
+
+4. A hash is a collection of a value and a key used to access/define it.  Hashes are great for forms that have a question that can be stored as a key and a user's input/answer that is stored as the key's value.
+
+5. Playlist tracks and their songs. Food and their food group
+
+6. Iteration is useful for accessing multiple elements in a data set with as few lines of code as possible
+
+7. Chores.each do |enough, said|
+
+8. A block is a set of code that can be called upon to process some data (like a method)
+
+9. A block parameter is a place holder that allows for successive data to be input and processed.  The value comes from a variable that is passed into the parameter when the block is called.
