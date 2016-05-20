@@ -47,6 +47,6 @@ packed_room = {
 
 p packed_room
 puts ' '
-p packed_room[:containers][:bookshelves]
+p packed_room[:containers][1]
 puts ' '
-p packed_room[:seating][:bed][0]
+p packed_room[:seating][-1][:bed][0]
