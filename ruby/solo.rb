@@ -50,14 +50,12 @@ ships.times do
 	fuel = gets.chomp.to_i
 	puts ' '
 
-	puts "How many gallons of fuel can it hold?"
+	puts "How many pounds of fuel can it hold?"
 	capacity = gets.chomp.to_i
 	puts ' '
 
 	armada << SpaceShip.new(name, model, fuel, capacity)
 end
-
-puts ' '
 
 armada[0].current_fuel = 80
 puts "#{armada[0].ship_name} has #{armada[0].check_fuel} lbs of fuel left."
@@ -65,8 +63,8 @@ puts "#{armada[0].ship_name} has #{armada[0].check_fuel} lbs of fuel left."
 puts ' '
 
 armada.each { |ship|
-puts "The #{ship.ship_name}-#{ship.ship_model} uses #{ship.fuel_type.downcase}.
-It holds #{ship.fuel_capacity}lbs of fuel and is #{ship.current_fuel}\% full."
+puts "The #{ship.ship_name}-#{ship.ship_model} class ship uses #{ship.fuel_type.downcase}.
+It holds #{ship.fuel_capacity}lbs of fuel and is #{ship.current_fuel}\% fueled."
 }
 
 puts ' '
