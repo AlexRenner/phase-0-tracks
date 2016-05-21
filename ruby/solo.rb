@@ -15,4 +15,10 @@ class SpaceShip
 		@current_fuel = fuel
 		@velocity = 0
 	end
+
 end
+
+Orion = SpaceShip.new("X21", 100, 1000)
+
+puts "The #{Orion.ship_name}-#{Orion.ship_model} uses #{Orion.fuel_type.downcase}.
+It holds #{Orion.fuel_capacity}lbs of fuel and is #{Orion.current_fuel}\% full."
