@@ -30,7 +30,7 @@ class Person
 	include Shout
 end
 
-class ConfusedPersons
+class ConfusedPerson
 	include Shout
 end
 
