@@ -92,3 +92,13 @@ end
 
 #=======================================================================
 # Reflection Section
+# One has a string key for a data set value and the data set uses symbols
+# that are equal to integers.  The require looks for a file using a directory
+# location while the require_relative uses a location relative to the file
+# the require_relative is in. Loops that can iterate through hashes include
+# while, until, .each and for loops.  Each having their own purpouse, it depends
+# on the circumstance or desired result which one is better.  With a little
+# help from our guide we realized that the arguments were repetitive and
+# there is no nead to feed instance variables into methods multiple times.
+# When we rewrote the new class instance into a loop I felt like I had one
+# of those click moments when the whole syntax and setup just made sense.
