@@ -38,3 +38,9 @@ function car(make, model, year) {
 var paul = new car("chevy", "impala", 2007);
 console.log(paul);
 paul.revItUp();
+
+var tabatha = new car("chevy", "cobalt", 2009);
+console.log(tabatha);
+
+var pam = new car("chevy", "malibu", 1999);
+console.log(pam);
