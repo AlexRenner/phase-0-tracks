@@ -49,14 +49,21 @@ function compare_hash(obj, obj2) {
 
 var new_array = [];
 
-function randomize_letters(times) {
-	var random_number = Math.floor(Math.random()*11);
+function randomize_letters() {
+	var random_number = Math.floor((Math.random()*10)+1);
+	// console.log(random_number);
 	var random_word = "";
 	var abcs = "abcdefghijklmnopqrstuvwxyz";
 	for (var i = 0; i < random_number; i++) {
-		random_word += abcs.charAt(Math.floor(Math.random() * abcs.length));
+		random_word += abcs.charAt(Math.floor((Math.random() * abcs.length)+1));
 	}
 	new_array.push(random_word);
+};
+
+function more_words(times) {
+	for (var i=0; i < times; i++) {
+		randomize_letters();
+	}
 };
 
 string_array.forEach(evaluate_array);
@@ -65,5 +72,8 @@ console.log(new_string);
 compare_hash(hash1, hash3);
 compare_hash(hash1, hash2);
 
-randomize_letters(10);
+more_words(10);
 console.log(new_array);
+
+new_array.forEach(evaluate_array);
+console.log(new_string);
