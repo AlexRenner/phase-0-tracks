@@ -36,7 +36,7 @@ var comparison = false;
 
 function compare_hash(obj, obj2) {
 	delete comparison;
-	if (obj[1] === obj2[1]) {
+	if (obj.age === obj2.age) {
 		comparison = true;
 }	else {
 		comparison = false;
