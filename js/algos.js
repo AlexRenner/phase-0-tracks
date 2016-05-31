@@ -32,14 +32,14 @@ var hash3 = {
 	name: "mckinzie", age: 25
 };
 
-var comparison = false;
-
 function compare_hash(obj, obj2) {
-	delete comparison;
+	var comparison = null;
 	if (obj.age === obj2.age) {
 		comparison = true;
+		console.log(comparison);
 }	else {
 		comparison = false;
+		console.log(comparison);
 	}
 };
 
@@ -47,25 +47,23 @@ function compare_hash(obj, obj2) {
 // write method to write words from random integers
 // print new array with "words" to console
 
-var random_array = [Math.floor(Math.random()*11), Math.floor(Math.random()*11), Math.floor(Math.random()*11)];
-
 var new_array = [];
 
-function randomize_letters(array_item) {
+function randomize_letters(times) {
+	var random_number = Math.floor(Math.random()*11);
+	var random_word = "";
 	var abcs = "abcdefghijklmnopqrstuvwxyz";
-	var new_string_array = [];
-	array_item.times(new_string_array.push(abcs[Math.floor(Math.random()*26)]));
-	var random_word = new_string_array.join("");
+	for (var i = 0; i < random_number; i++) {
+		random_word += abcs.charAt(Math.floor(Math.random() * abcs.length));
+	}
 	new_array.push(random_word);
 };
 
 string_array.forEach(evaluate_array);
 console.log(new_string);
 
-compare_hash(hash1, hash3); // I can't seem to figure out why this equates to true...
-console.log(comparison);
+compare_hash(hash1, hash3);
 compare_hash(hash1, hash2);
-console.log(comparison);
 
-random_array.forEach(randomize_letters);
+randomize_letters(10);
 console.log(new_array);
