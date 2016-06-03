@@ -1,3 +1,14 @@
+def build_array(one, two, three)
+	constructed_array = ["First"]
+	constructed_array += [one, two, three]
+	p constructed_array
+end
+
+def add_to_array(array, item)
+	array << item
+	p array
+end
+
 new_array = []
 
 p new_array
@@ -27,3 +38,15 @@ if new_array.include?("Go team!")
 else
 	puts "Sorry! Nope."
 end
+
+second_array = ["Coffee", "Tea", "Water"]
+
+third_array = new_array + second_array
+
+p third_array
+
+build_array("Bag", 4, true)
+
+final_array = []
+add_to_array(final_array, ";kajsdg")
+add_to_array(["a", "b", "c", 1, 2], 3)
