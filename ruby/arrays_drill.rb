@@ -13,3 +13,17 @@ p new_array
 new_array.delete_at(2)
 
 p new_array
+
+new_array.insert(2, "Go team!")
+
+p new_array
+
+new_array.delete("item1")
+
+p new_array
+
+if new_array.include?("Go team!")
+	puts "It includes Go team!"
+else
+	puts "Sorry! Nope."
+end
