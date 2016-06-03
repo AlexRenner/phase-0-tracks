@@ -1,47 +1,52 @@
-def array_method(a,b,c)
- build_array = [a,b,c]
- p build_array
+def build_array(one, two, three)
+	constructed_array = ["First"]
+	constructed_array += [one, two, three]
+	p constructed_array
 end
 
-def array_method2(arr, value)
- 	arr << value 
- 	p arr 
+def add_to_array(array, item)
+	array << item
+	p array
 end
 
-array_method2([1,2,3], 4)
-array_method2(["a","b","c"], "d")
-array_method2(["$@$%", "#@%*", "!@$^" ], "$%^&")
+new_array = []
 
-empty_array = []
-p empty_array 
-
-empty_array << "one"
-empty_array << "two"
-empty_array << "three"
-empty_array << "four"
-empty_array << "five"
-p empty_array 
-
-
-empty_array.delete_at(2)
-p empty_array
-
-empty_array.insert(2, "six")
-p empty_array 
-
-empty_array.delete("one") 
-p empty_array
-
-if empty_array.include?("six")
- puts "This array includes six!"
-else
- puts "This array does not include six!"
-end
-
-new_array = ["dogs","cats","rabbits","hamsters", "octopus"]
 p new_array
 
-added_arrays = new_array + empty_array 
-p added_arrays
+new_array << "item1"
+new_array << "item2"
+new_array << "item3"
+new_array << "item4"
+new_array << "item5"
 
-array_method(1,2,3)
+p new_array
+
+new_array.delete_at(2)
+
+p new_array
+
+new_array.insert(2, "Go team!")
+
+p new_array
+
+new_array.delete("item1")
+
+p new_array
+
+if new_array.include?("Go team!")
+	puts "It includes Go team!"
+else
+	puts "Sorry! Nope."
+end
+
+second_array = ["Coffee", "Tea", "Water"]
+
+third_array = new_array + second_array
+
+p third_array
+
+build_array("Bag", 4, true)
+
+final_array = []
+add_to_array(final_array, ";kajsdg")
+add_to_array(["a", "b", "c", 1, 2], 3)

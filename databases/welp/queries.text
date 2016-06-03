@@ -1,0 +1,136 @@
+Template:
+SELECT players.name, teams.name FROM players JOIN teams ON players.team_id = teams.id;
+
+Queries:
+
+SELECT businesses, reviews, users (
+FROM businesses JOIN reviews ON businesses.id = reviews.business_id,
+FROM reviews JOIN users ON reviews.user_id = users.id
+);
+
+ERROR: near "FROM": Syntax Error
+
+SELECT businesses, reviews, users,
+FROM businesses JOIN reviews ON businesses.id = reviews.business_id,
+FROM reviews JOIN users ON reviews.user_id = users.id;
+
+ERROR: near "FROM": Syntax Error
+
+SELECT businesses, reviews, users,
+FROM businesses JOIN reviews ON businesses.id = reviews.business_id,
+FROM reviews JOIN users ON reviews.user_id = users.id;
+
+ERROR: near "FROM": Syntax Error
+
+SELECT businesses, reviews, users
+FROM businesses JOIN reviews ON businesses.id = reviews.business_id
+FROM reviews JOIN users ON reviews.user_id = users.id;
+
+ERROR: near "FROM": Syntax Error
+
+SELECT businesses, reviews, users (
+FROM businesses
+JOIN reviews ON businesses.id = reviews.business_id,
+JOIN users ON reviews.user_id = users.id
+);
+
+ERROR: near "FROM": Syntax Error
+
+New Example:
+select r.id as recipe_id, r.name, ri.ingredient_id, i.item
+from recipes r
+join recipe_ingredients ri on (r.id = ri.recipe_id)
+join ingredients i on (ri.ingredient_id = i.id);
+
+Queries:
+SELECT businesses.business, users.firstname, users.lastname, reviews.stars, reviews.comment
+FROM businesses, users, reviews
+JOIN reviews ON (businesses.id = reviews.business_id)
+JOIN users ON (reviews.user_id = users.id);
+
+ERROR: ambiguous column name: users.firstname
+
+SELECT *
+FROM businesses, users, reviews
+JOIN reviews ON (businesses.id = reviews.business_id)
+JOIN users ON (reviews.user_id = users.id);
+
+ERROR: ambiguous column name: main.users.id
+
+SELECT businesses.business, users.firstname AS first, users.lastname AS last, reviews.stars, reviews.comment
+FROM businesses, users, reviews
+JOIN reviews ON (businesses.id = reviews.business_id)
+JOIN users ON (reviews.user_id = users.id);
+
+ERROR: ambiguous column name: users.firstname
+
+SELECT businesses.business, users.firstname AS first, users.lastname AS last, reviews.stars, reviews.comment
+FROM businesses
+JOIN reviews ON (businesses.id = reviews.business_id)
+JOIN users ON (reviews.user_id = users.id);
+
+Uhm....  no errors but nothing happened....  no output
+
+SELECT businesses.business, users.firstname AS first, users.lastname AS last, reviews.stars, reviews.comment
+FROM businesses
+LEFT JOIN reviews ON (businesses.id = reviews.business_id)
+LEFT JOIN users ON (reviews.user_id = users.id);
+
+Amir's Towing||||
+Lotus Yoga||||
+Sushi World||||
+
+SELECT businesses.business, users.firstname AS first, users.lastname AS last, reviews.stars, reviews.comment
+FROM reviews
+LEFT JOIN businesses ON (businesses.id = reviews.business_id)
+LEFT JOIN users ON (reviews.user_id = users.id);
+
+|||4|Good enough
+|||5|Excellent
+|||2|Food Poisoning...
+
+SELECT businesses.business, users.firstname AS first, users.lastname AS last, reviews.stars, reviews.comment
+FROM users
+LEFT JOIN businesses ON (businesses.id = reviews.business_id)
+LEFT JOIN reviews ON (reviews.user_id = users.id);
+
+lots of more garble that printed three times
+
+SELECT b.business, u.firstname AS first, u.lastname AS last, r.stars, r.comment
+FROM reviews r
+LEFT JOIN businesses b ON (b.id = r.business_id)
+LEFT JOIN users u ON (r.user_id = u.id);
+
+|||4|Good enough
+|||5|Excellent
+|||2|Food Poisoning...
+
+SELECT businesses.business AS busin, users.firstname AS first, users.lastname AS last, reviews.stars, reviews.comment
+FROM reviews
+LEFT JOIN users ON (businesses.id = reviews.business_id)
+LEFT JOIN businesses ON (businesses.id = users.id);
+
+|Bradfor|Pitt|4|Good enough
+|Holly|Berry|4|Good enough
+|Denzel|George|4|Good enough
+|Bradfor|Pitt|5|Excellent
+|Holly|Berry|5|Excellent
+|Denzel|George|5|Excellent
+|Bradfor|Pitt|2|Food Poisoning...
+|Holly|Berry|2|Food Poisoning...
+|Denzel|George|2|Food Poisoning...
+
+SELECT businesses.business, users.firstname AS first, users.lastname AS last, reviews.stars AS star, reviews.comment AS comments
+FROM businesses
+LEFT JOIN users ON (reviews.user_id = businesses.id)
+LEFT JOIN reviews ON (businesses.id  = users.id);
+
+Amir's Towing||Bradfor|Pitt||
+Amir's Towing||Holly|Berry||
+Amir's Towing||Denzel|George||
+Lotus Yoga||Bradfor|Pitt||
+Lotus Yoga||Holly|Berry||
+Lotus Yoga||Denzel|George||
+Sushi World||Bradfor|Pitt||
+Sushi World||Holly|Berry||
+Sushi World||Denzel|George||
