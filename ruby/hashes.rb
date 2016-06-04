@@ -1,99 +1,61 @@
-# Prompt user for client info
-puts "How many clients would you like to add?"
-client_count = gets.chomp.to_i
+# prompt user for input
+# create new hash
+# push input to hash
+# check for valid input where necessary
+# prompt user for updates
+# print hash and exit
+
+new_client = Hash.new
+puts "Hello! Thank you for choosing Redo For You! to renovate your place!"
+puts "Let us get some information for our systems please."
+puts "What is your name?"
+new_client[:name] = gets.chomp.capitalize
 puts ' '
 
-# Create client hash
-client = {}
+puts "Welcome #{new_client[:name]}! How old are you?"
+new_client[:age] = gets.chomp.to_i
+puts ' '
 
-def delux_check(delux)
-	
-	delux_package = nil
+puts "And do you have any children?"
+children = gets.chomp.downcase
+puts ' '
 
-	until delux_package == true || delux_package == false
-		delux_package = gets.chomp
-		puts ' '
+if children == "yes" || children == "y"
+	puts "How many do you have?"
+	new_client[:children] = gets.chomp.to_i
+else
+	new_client[:children] = 0
+end
+puts ' '
 
-		if delux_package == "yes"
-			delux = true
-			return delux
-		elsif delux_package == "no" 
-			delux = false
-			return delux
+puts "What decor do you have in mind #{new_client[:name]}?"
+new_client[:decor] = gets.chomp
+puts ' '
+
+puts "Thank you #{new_client[:name]}! I will log that you are #{new_client[:age]},
+have #{new_client[:children]} kid(s) and would like a #{new_client[:decor]} style decor.
+Would you like to update any of this information?"
+update = gets.chomp.downcase
+
+if update == "yes" || update == "y"
+	change = nil 
+	until change == "done"
+		puts "What would you like to change? (name, age, children or decor)
+		Enter \"done\" when finished." # not sure why it centers this
+		change = gets.chomp.downcase
+		if new_client.any? {|key, value| key.to_s == change}
+			puts "And what would you like to change #{change} to?"
+			new_client[change.to_sym] = gets.chomp
+			new_client[:age] = new_client[:age].to_i # couldn't get both of these to_i in one statement
+			new_client[:children] = new_client[:children].to_i
+		elsif change == "done"
 		else
-			puts "Please enter yes or no:"
+			puts "I didn't quite catch that."
 		end
 	end
-	puts ' '
 end
 
-# Create survey method to process values
-def client_survey(client_info)
-	puts "What is your full name?"
-	client_info[:name] = gets.chomp
-	puts ' '
-
-	puts "What is your age?"
-	client_info[:age] = gets.chomp.to_i
-	puts ' '
-
-	puts "How many children do you have?"
-	client_info[:children] = gets.chomp.to_i
-	puts ' '
-
-	puts "What decor theme do you like?"
-	client_info[:decor] = gets.chomp
-	puts ' '
-
-	puts "Would you like the delux package? (yes/no)"
-	delux_answer = nil
-	client_info[:delux] = delux_check(delux_answer)
-	puts ' '
-end
-
-# Call method
-client_survey(client)
-
-p client
+puts "Thank you #{new_client[:name]}! I will log that you are #{new_client[:age]},
+have #{new_client[:children]} kid(s) and would like a #{new_client[:decor]} style decor."
 puts ' '
-
-def second_survey(client_info)
-	puts "What value would you like to change?"
-	entry = gets.chomp
-
-	if entry.include? "name"
-		client_info[:name] = gets.chomp
-	elsif entry.include? "age"
-		client_info[:age] = gets.chomp.to_i
-	elsif entry.include? "children"
-		client_info[:children] = gets.chomp.to_i
-	elsif entry.include? "decor"
-		client_info[:decor] = gets.chomp
-	elsif entry.include? "theme"
-		client_info[:decor] = gets.chomp
-	elsif entry.include? "delux"
-		puts "Would you like the delux package? (yes/no)"
-		delux_answer = nil
-		client_info[:delux] = delux_check(delux_answer)
-	elsif entry.include? "package"
-		puts "Would you like the delux package? (yes/no)"
-		delux_answer = nil
-		client_info[:delux] = delux_check(delux_answer)
-	else
-		puts "Invalid value name. Thank you for your information!"
-	end
-end
-
-# Prompt user to check and/or change info
-puts "Would you like to change any of this info? (yes/no)"
-update = gets.chomp
-puts ' '
-
-if update == "yes"
-	second_survey(client)
-	p client
-	exit(0)
-else
-	p client
-	exit(0)
-end
+p new_client
