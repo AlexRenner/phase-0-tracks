@@ -41,7 +41,7 @@ if update == "yes" || update == "y"
 	change = nil 
 	until change == "done"
 		puts "What would you like to change? (name, age, children or decor)
-		Enter \"done\" when finished."
+		Enter \"done\" when finished." # not sure why it centers this
 		change = gets.chomp.downcase
 		if new_client.any? {|key, value| key.to_s == change}
 			puts "And what would you like to change #{change} to?"
