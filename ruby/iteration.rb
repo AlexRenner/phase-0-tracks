@@ -1,104 +1,84 @@
-def block_in_method
-	yield("Whazzzzzzuuuuup!?")
-end
-
-block_in_method { |x| puts "How's it going? #{x}"}
-
-dishes = ["plate", "bowl", "knife", "cup", "fork"]
-
-dish_count = {
-	"plates" => 5,
-	"bowls" => 3,
-	"cups" => 6
+soda_flavors = ["Pepsi", "Coke", "Dr. Pepper", "Sprite"]
+wine_for_food = {
+	:poultry => "white",
+	:beef => "red",
+	:pork => "either",
+	:fish => "white"
 }
 
-puts ' '
-p dishes
-puts ' '
-p dish_count
-puts ' '
-
-dishes.each do |dish|
-	puts "The #{dish} is clean!"
+soda_flavors.each do |flavor|
+	puts "I like #{flavor}!"
 end
 
-puts ' '
-
-dish_count.each do |dish, quantity|
-	puts "All #{quantity} #{dish} are clean!"
+soda_flavors.map do |flavor| 
+	flavor = flavor + " cola"
+	p flavor
 end
 
-puts ' '
+soda_flavors.map! { |flavor| flavor.downcase }
 
-dishes.map! do |dish|
-	p dishes
-	"Clean #{dish}"
-end
+p soda_flavors
 
-puts ' '
-puts "After .map call:"
-p dishes
-puts ' '
+wine_for_food.each {|meat, wine| puts "#{wine.capitalize} wine goes with #{meat}."}
 
-# A method that iterates throught items deleting per condition
-numbers = [1,2,3,4,5,6,7,8]
-p numbers
+new_hash = Hash[wine_for_food.map { |meat, wine| [meat, wine.capitalize] } ]
+p new_hash
 
-def smaller_delete(array)
-	array.delete_if {|number| number < 5}
-	p array
-end
-
-smaller_delete(numbers)
-puts ' '
-
-# A method that filters a data structure for only items per condition
-numbers = [1,2,3,4,5,6,7,8]
-p numbers
-
-def only_evens(array)
-	array.each do |number|
-		if number % 2 == 0
-			p number
+def delete_item (array)
+	array.each do |item|
+		if item.is_a?(String) && item.include?(".")
+			array.delete(item)
 		else
-			nil
+			puts "Nothing to delete"
 		end
 	end
 end
 
-only_evens(numbers)
-puts ' '
-# Another that filters a data structure for only items per condition
-puts "Type something puh-lease:"
-user_string = gets.chomp
+test_array = ["a", 11, false, nil]
+delete_item(soda_flavors)
+p soda_flavors
+delete_item(test_array)
+p test_array
 
-def find_the_a(string)
-	a_array = string.split(' ')
-	a_array.each do |word|
-		if word.include?("a")
-			p word
-		else
-			nil
+def filter_hash(hash)
+	hash.each do |meat, wine|
+		if wine.downcase == "white"
+			# p hash
+		else 
+			hash.delete(meat)
 		end
 	end
 end
 
-find_the_a(user_string)
-puts ' '
-# A method that removes items from a data structure until false
-no_creativity = {
-	"one" => 1,
-	"two" => 2,
-	"three" => 3,
-	"four" => 4,
-	"five" => 5,
-	"six" => 6
+filter_hash(wine_for_food)
+p wine_for_food
+
+wine_for_food = {
+	:poultry => "white",
+	:beef => "red",
+	:pork => "either",
+	:fish => "white"
 }
 
-def no_small_numbers(hash)
-	hash.delete_if {|string, integer| integer <= 3}
-	p hash
+def wine_check(hash, meat_choice)
+	hash.each do |meat, wine|
+		if meat.to_s == meat_choice
+			puts "#{wine.capitalize} wine would go great with #{meat_choice}!"
+		else
+		end
+	end
 end
 
-no_small_numbers(no_creativity)
-puts ' '
+wine_check(wine_for_food, "fish")
+wine_check(wine_for_food, "pork")
+
+def last_one(array)
+	index = array.length
+	until array.length <= 1
+		array.delete_at(-1)
+		# p array
+	end
+end
+
+last_one(test_array)
+p test_array
