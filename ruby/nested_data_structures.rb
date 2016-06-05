@@ -1,52 +1,23 @@
-packed_room = {
-	:boxes => [
-		'dvds',
-		'books',
-		'clothes',
-		'electronics',
-		'xbox',
-		'computer',
-		'footwear',
-		'silverware',
-		'dishes'
+marvel = {
+	:ironman => ["Iron Man", "Iron Man 2", "Iron Man 3"],
+	:thor => ["Thor", "Thor: The Dark World"],
+	:captainamerica => [
+		"Captain America: The First Avenger",
+		"Captain America: The Winter Soldier",
+		"Captain America: Civil War"
 	],
-	:containers => [
-		'dresser',
-		{:bookshelves => 3},
-		'hamper',
-		'garbage'
-	],
-	:surfaces => [
-		'table',
-		{:end_tables => 2},
-		'entertainment center'
-	],
-	:seating => [
-		{:gameing_chair => 2},
-		'recliner',
-		'futon',
-		'leather chair',
-		'leather foot rest',
-		{:bed => [
-			'mattress',
-			'box spring',
-			'frame',
-			'sheets',
-			'pillows'
-			]
-		}
-	],
-	:miscelanious => [
-		{:guitars => 3},
-		'piano',
-		'trumpet',
-		'lamp',
-		'TV'
-	]
-}
+	:spiderman => {
+		:mcguire => ["Spiderman", "Spiderman 2", "Spiderman 3"],
+		:garfield => [
+			"The Amazing Spiderman",
+			"The Amazing Spiderman 2"]
+	},
+	:hulk => "The Incredible Hulk",
+	:avengers => ["The Avengers", "The Avengers: Age of Ultron"]
+	}
 
-p packed_room
-puts ' '
-p packed_room[:containers][1]
-puts ' '
-p packed_room[:seating][-1][:bed][0]
+p marvel
+
+p marvel[:ironman][1]
+
+p marvel[:spiderman][:garfield][1]
