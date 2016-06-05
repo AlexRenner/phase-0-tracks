@@ -52,3 +52,33 @@ end
 
 filter_hash(wine_for_food)
 p wine_for_food
+
+wine_for_food = {
+	:poultry => "white",
+	:beef => "red",
+	:pork => "either",
+	:fish => "white"
+}
+
+def wine_check(hash, meat_choice)
+	hash.each do |meat, wine|
+		if meat.to_s == meat_choice
+			puts "#{wine.capitalize} wine would go great with #{meat_choice}!"
+		else
+		end
+	end
+end
+
+wine_check(wine_for_food, "fish")
+wine_check(wine_for_food, "pork")
+
+def last_one(array)
+	index = array.length
+	until array.length <= 1
+		array.delete_at(-1)
+		# p array
+	end
+end
+
+last_one(test_array)
+p test_array
