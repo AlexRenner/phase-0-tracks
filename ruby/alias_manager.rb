@@ -1,49 +1,54 @@
-# create method for making fake name
+# declare neccesary variables
+# define method that takes an array
+# prompt user for their name
+# break name into array
+# iterate through array
+# write fix for edge cases and irregular characters
+# push to hash (alias => real name)
 
-def fake_name(name)
-		name_array = name.split(' ')
-		new_name = name_array[1] + ' ' + name_array[0]
-		scrambled_name = new_name.downcase.gsub(/[aeiou]/, 'a' => 'e', 'e' => 'i', 'i' => 'o', 'o' => 'u', 'u' => 'a')
-		scrambled_again = scrambled_name.gsub(/[bcdfghjklmnpqrstvwxyz]/, 'b' => 'c', 'c' => 'd', 'd' => 'f', 'f' => 'g', 'g' => 'h', 'h' => 'j', 'j' => 'k', 'k' => 'l', 'l' => 'm', 'm' => 'n', 'n' => 'p', 'p' => 'q', 'q' => 'r', 'r' => 's', 's' => 't', 't' => 'v', 'v' => 'w', 'w' => 'x', 'x' => 'y', 'y' => 'z', 'z' => 'a')
-		scrambled_array = scrambled_again.split(' ')
-		final_name = scrambled_array[0].capitalize + ' ' + scrambled_array[1].capitalize
-		return final_name
-end
+alias_hash = Hash.new
 
-$spy_name = nil
-$name_equivelents = Hash.new
-
-class NameGenerator
-	
-	until $spy_name == "done"
-# prompt user for their spy name
-		puts "What is your secret spy first and last name? (type \"done\" to cancel)" 
+def alias_maker(hash)
+	name = ""
+	until name.downcase == "quit"
+		puts "Hello! What name would you like to alias? (Or type \"quit\" to exit)"
 		print '>'
-		$spy_name = gets.chomp
-		puts ' '
-		if $spy_name.downcase == "done"
-			$name_equivelents.each do |name, new_name|
-				puts "#{name}'s fake name is #{new_name}."
-			end
-			puts "Don't tell anyone!"
-			exit(0)
+		name = gets.chomp.downcase
+		if name == "quit"
+			exit_method(hash)
 		else
-			alias_name = fake_name($spy_name)
+			scrambled_name = name.gsub(/[aeioubcdfghjklmnpqrstvwxyz]/,
+				'a' => 'e', 'e' => 'i', 'i' => 'o', 'o' => 'u', 'u' => 'a',
+				'b' => 'c', 'c' => 'd', 'd' => 'f', 'f' => 'g', 'g' => 'h',
+				'h' => 'j', 'j' => 'k', 'k' => 'l', 'l' => 'm', 'm' => 'n',
+				'n' => 'p', 'p' => 'q', 'q' => 'r', 'r' => 's', 's' => 't',
+				't' => 'v', 'v' => 'w', 'w' => 'x', 'x' => 'y', 'y' => 'z',
+				'z' => 'b')
+			# scrambled_again = scrambled_name.gsub(/[bcdfghjklmnpqrstvwxyz]/,)
+			original_name_array = name.split(' ')
+			name_array = scrambled_name.split(' ')
+			if original_name_array.length == 1
+				hash[scrambled_name.capitalize] = name.capitalize
+			elsif original_name_array.length == 2
+				name_array = [name_array[-1].capitalize, name_array[0].capitalize]
+				original_name_array = [original_name_array[0].capitalize, original_name_array[1].capitalize]
+				hash[name_array.join(' ')] = original_name_array.join(' ')
+			elsif original_name_array.length == 3
+				name_array = [name_array[-1].capitalize, name_array[1].capitalize, name_array[0].capitalize]
+				original_name_array = [
+					original_name_array[0].capitalize,
+					original_name_array[1].capitalize,
+					original_name_array[-1].capitalize]
+				hash[name_array.join(' ')] = original_name_array.join(' ')
+			end
+			# p name_array
 		end
-		puts "Your new super top secret alias is #{alias_name}!"
-		puts ' '
-		
-		$name_equivelents[$spy_name] = alias_name
 	end
 end
 
-NameGenerator
+def exit_method(hash)
+	hash.each {|code_name, name| puts "#{code_name} is the alias of #{name}."}
+	exit(0)
+end
 
-#  Some stuff that I tried and I left for future consideration
-
-#exploded_name = new_name.split(//)
-#	exploded_name.each do |x|
-#		vowels = 'aeiou'
-#		consonants = 'bcdfghjklmnpqrstvwxyz'
-#		index = 0
-#		while index
+alias_maker(alias_hash)

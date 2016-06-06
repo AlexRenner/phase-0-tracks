@@ -1,6 +1,6 @@
 # ask for user input
 puts "Please enter your password:"
-$random_word = gets.chomp
+random_word = gets.chomp
 # write encryption method
 def encrypt(word)
 	index = 0
@@ -41,20 +41,20 @@ end
 
 # ask user if they want decrypted or encrypted
 
-def inquiry
+def inquiry(random_word)
 	puts "Would you like to encrypt or decrypt it?"
 	choice = gets.chomp
 
 	if choice == "encrypt"
-		encrypt($random_word)
+		encrypt(random_word)
 	elsif choice == "decrypt"
-		decrypt($random_word)
+		decrypt(random_word)
 	elsif choice == "both"
-		decrypt(encrypt($random_word))
+		decrypt(encrypt(random_word))
 	else 
 		puts "I didn't quite catch that... try again"
 		inquiry
 	end
 end
 
-inquiry
+inquiry(random_word)
