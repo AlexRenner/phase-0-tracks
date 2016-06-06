@@ -8,16 +8,40 @@
 
 alias_hash = Hash.new
 
-def alias_maker
-	name = nil
+def alias_maker(hash)
+	name = ""
 	until name.downcase == "quit"
 		puts "Hello! What name would you like to alias? (Or type \"quit\" to exit)"
-		name = gets.chomp
-		if name.downcase == "quit"
-			exit_method(alias_hash)
+		print '>'
+		name = gets.chomp.downcase
+		if name == "quit"
+			exit_method(hash)
 		else
-			name_array = name.split(' ')
-			p name_array
+			scrambled_name = name.gsub(/[aeioubcdfghjklmnpqrstvwxyz]/,
+				'a' => 'e', 'e' => 'i', 'i' => 'o', 'o' => 'u', 'u' => 'a',
+				'b' => 'c', 'c' => 'd', 'd' => 'f', 'f' => 'g', 'g' => 'h',
+				'h' => 'j', 'j' => 'k', 'k' => 'l', 'l' => 'm', 'm' => 'n',
+				'n' => 'p', 'p' => 'q', 'q' => 'r', 'r' => 's', 's' => 't',
+				't' => 'v', 'v' => 'w', 'w' => 'x', 'x' => 'y', 'y' => 'z',
+				'z' => 'b')
+			# scrambled_again = scrambled_name.gsub(/[bcdfghjklmnpqrstvwxyz]/,)
+			original_name_array = name.split(' ')
+			name_array = scrambled_name.split(' ')
+			if original_name_array.length == 1
+				hash[scrambled_name.capitalize] = name.capitalize
+			elsif original_name_array.length == 2
+				name_array = [name_array[-1].capitalize, name_array[0].capitalize]
+				original_name_array = [original_name_array[0].capitalize, original_name_array[1].capitalize]
+				hash[name_array.join(' ')] = original_name_array.join(' ')
+			elsif original_name_array.length == 3
+				name_array = [name_array[-1].capitalize, name_array[1].capitalize, name_array[0].capitalize]
+				original_name_array = [
+					original_name_array[0].capitalize,
+					original_name_array[1].capitalize,
+					original_name_array[-1].capitalize]
+				hash[name_array.join(' ')] = original_name_array.join(' ')
+			end
+			# p name_array
 		end
 	end
 end
@@ -26,3 +50,5 @@ def exit_method(hash)
 	hash.each {|code_name, name| puts "#{code_name} is the alias of #{name}."}
 	exit(0)
 end
+
+alias_maker(alias_hash)
