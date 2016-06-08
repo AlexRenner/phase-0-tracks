@@ -1,16 +1,16 @@
 # SPECIES ------------------------
-# Puppes Kanineicum
+# Huskey
 
 # CHARACTERISTICS ----------------
-# Fur: Long!
-# Color: Brown
+# Fur: Medium
+# Color: Brown, white, black, grey (or a mixture of)
 # Size: Medium
 # Playful: Absolutely
-# Age: 12-14 years
+# Age: 10-12 years
 
 # BEHAVIOR -----------------------
 # Fetches
-# Swims
+# Towes
 # Eats (A lot!)
 # Cuddles
 # May Chew
