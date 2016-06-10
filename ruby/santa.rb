@@ -1,9 +1,9 @@
 class Santa
-	attr_reader :name, :age, :ethnicity
-	attr_accessor :age
-	def initialize(name, gender, ethnicity)
-		puts "Initializing Santa instance!"
-		@name = name
+	attr_reader :age, :ethnicity
+	attr_accessor :gender
+
+	def initialize(gender, ethnicity)
+		puts "Initializing Santa..."
 		@gender = gender
 		@ethnicity = ethnicity
 		@age = rand(140)
@@ -15,11 +15,11 @@ class Santa
 	end
 
 	def speak
-		puts "Ho, ho, ho! Haaaapy Holidays!"
+		puts "Ho, ho, ho! Haaaapy holidays!"
 	end
 
 	def eat_milk_and_cookies(cookie)
-		puts "That was a good #{cookie}"
+		puts "That was a good #{cookie}!"
 	end
 
 	def celebrate_birthday
@@ -29,38 +29,37 @@ class Santa
 	def get_mad_at(reindeer)
 		@reindeer_ranking.delete(reindeer)
 		@reindeer_ranking[-1] = reindeer
-		p @reindeer_ranking
 	end
+
+	# def age_check
+	# 	p @age
+	# end
+
+	# def ethnicity_check
+	# 	p @ethnicity
+	# end
 end
 
-example_genders = [
-	"agender", "female", "bigender",
-	"male", "female", "gender fluid", "N/A"
-]
-example_ethnicities = [
-	"black", "Latino", "white",
-	"Japanese-African", "prefer not to say",
-	"Mystical Creature (unicorn)", "N/A"
-]
+santa_array = []
 
-santas = []
-santas << Santa.new("Alex", "male", "white")
-santas << Santa.new("Sophie", "female", "black")
+# santa_test = Santa.new(genders[3], ethnicities[0])
+# santa_array << santa_test
 
-p santas
+# santa_test.speak
+# santa_test.eat_milk_and_cookies("no bake")
+# 187.times { santa_test.celebrate_birthday }
+# santa_test.get_mad_at("Vixen")
+# p santa_test.age
+# p santa_test.ethnicity
+# santa_test.ethnicity = "couch"
 
-santas[0].get_mad_at("Vixen")
-29.times { santas[0].celebrate_birthday }
-santas[1].age = 27
-
-puts "Santa #{santas[0].name} is #{santas[0].age} years old and #{santas[0].ethnicity}!"
-puts "Santa #{santas[1].name} is #{santas[1].age} years old and #{santas[1].ethnicity}!"
-
-times = 1
-
-10.times do
-	times += 1
-	santas << Santa.new("Santa#{times}", example_genders.sample, example_ethnicities.sample)
+def santa_generator(array)
+	genders = ["agender", "female", "bigender", "male"]
+	ethnicities = ["black", "latino", "white", "asian",
+		"indian", "middle-eastern", "part dragon"]
+	array << Santa.new(genders.sample, ethnicities.sample)
 end
 
-p santas
+10.times {santa_generator(santa_array)}
+
+p santa_array
