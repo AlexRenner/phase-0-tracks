@@ -1,4 +1,7 @@
 class Santa
+	attr_reader :age, :ethnicity
+	attr_accessor :gender
+
 	def initialize(gender, ethnicity)
 		puts "Initializing Santa..."
 		@gender = gender
@@ -27,6 +30,14 @@ class Santa
 		@reindeer_ranking.delete(reindeer)
 		@reindeer_ranking[-1] = reindeer
 	end
+
+	# def age_check
+	# 	p @age
+	# end
+
+	# def ethnicity_check
+	# 	p @ethnicity
+	# end
 end
 
 santa_array = []
@@ -34,10 +45,15 @@ genders = ["agender", "female", "bigender", "male"]
 ethnicities = ["black", "latino", "white", "asian",
 	"indian", "middle-eastern", "part dragon"]
 
-santa1 = Santa.new(genders[0], ethnicities[0])
-santa_array << santa1
+santa_test = Santa.new(genders[3], ethnicities[0])
+santa_array << santa_test
 
-santa1.speak
-santa1.eat_milk_and_cookies("no bake")
+santa_test.speak
+santa_test.eat_milk_and_cookies("no bake")
+187.times { santa_test.celebrate_birthday }
+santa_test.get_mad_at("Vixen")
+p santa_test.age
+p santa_test.ethnicity
+santa_test.ethnicity = "couch"
 
 p santa_array
