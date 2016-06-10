@@ -31,7 +31,7 @@
 # "Elementary,    my   dear        Watson!".squeeze(" ")
 # => "Elementary, my dear Watson!"
 
-# "z".<???>  <= Couldn't figure this one out.  Going to ask cohort
+# "z".codepoints  <= Couldn't figure this one out.  ASCII number for z
 # => 122 
 # (What is the significance of the number 122 in relation to the character z?)
 
