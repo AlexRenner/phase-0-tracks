@@ -25,3 +25,49 @@
 # input: the list's hash
 # steps: puts a sentence with dressed up hash
 # output: nice string for the user
+
+items = "carrots apples cereal pizza"
+grocery_list = Hash.new
+
+def print_list(list)
+  puts "Your list for shopping:"
+  list.each {|item, quantity| puts "#{item}: #{quantity}"}
+end
+
+def create_list(items, list)
+  items_array = items.split(" ")
+  items_array.each do |list_item|
+    list[list_item] = 1
+  end
+  print_list(list)
+end
+
+create_list(items, grocery_list)
+
+def add_item(item, list)
+  if list.has_key?(item)
+    list[item] += 1
+   else
+    list[item] = 1
+  end
+  print_list(list)    
+end
+
+add_item("juice", grocery_list)
+add_item("carrots", grocery_list)
+
+def remove_item(item, list)
+  list.delete(item)
+  print_list(list)
+end
+
+remove_item("cereal", grocery_list)
+
+def update_quantity(item, new_quantity, list)
+  list[item] = new_quantity
+  print_list(list)
+end
+
+update_quantity("pizza", 4, grocery_list)
+
+print_list(grocery_list)
