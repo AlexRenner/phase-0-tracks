@@ -71,3 +71,16 @@ end
 update_quantity("pizza", 4, grocery_list)
 
 print_list(grocery_list)
+
+# Reflection:
+# I deffinitely don't pseudocode enough.  I've always just dove in headfirst
+# and started coding block by block. It helps with organization.
+# Using an array as a tool to add to a hash was useful since the hash was 
+# going to actually hold all the important information in the grocery list.
+# Each method returned the hash with new or altered key-value pair(s).
+# Pretty much any variable can be passed into a method along with methods themselves.
+# Not sure if classes can be (haven't tried) but I know class instances can be.
+# You can pass information between methods by calling methods within eachother
+# (probably more ways that I am not aware of).
+# I had a good grasp on this challenge and its subject matter but I did have a few
+# syntax issues that had slipped my mind but I got some practice with.
