@@ -1,8 +1,11 @@
 class TV
+	attr_reader :resolution, :mounted
+	attr_accessor :size
+	
 	def initialize(resolution, size)
 		@resolution = resolution
 		@size = size
-		@status = "off"
+		@power = "off"
 		@mounted = false
 	end
 
@@ -15,4 +18,16 @@ class TV
 	end
 
 	def switch_power
-		
+		if @power == "off"
+			@power = "on"
+		elsif @power == "on"
+			@power = "off"
+		end
+	end
+
+	def change_resolution(resolution)
+		@resolution = resolution
+		puts "Your updated resolution is #{@resolution}p"
+	end
+end
+
