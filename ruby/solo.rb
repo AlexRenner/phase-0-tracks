@@ -1,70 +1,74 @@
-# create space ship class
-# create ship name, fuel type, fuel capacity, current fuel and velocity attributes
-# create model update, fuel usage and velocity change methods
-# call space ship stats in a string
-puts "How many ships would you like to register?"
-ships = gets.chomp.to_i
+class TV
+	attr_reader :resolution, :model, :size
+	attr_accessor :size
 
-class SpaceShip
-	attr_reader :ship_name, :fuel_type, :fuel_capacity
-	attr_accessor :ship_model, :current_fuel, :velocity
-
-	def initialize(name, model, fuel, capacity)
-		@ship_name = name
-		@ship_model = model
-		@fuel_type = "Combustables"
-		@fuel_capacity = capacity
-		@current_fuel = fuel
-		@velocity = 0
+	def initialize(model, resolution, size)
+		@model = model
+		@resolution = resolution 
+		@size = size
+		@power = "off"
+		@mounted = false
 	end
 
-	def change_velocity(velocity, usage)
-		@velocity = velocity
-		@current_fuel = @current_fuel - usage
+	def mount_tv
+		if @mounted == false
+			@mounted = true
+		elsif @mounted == true
+			@mounted = false
+		end
 	end
 
-	def check_fuel
-		fuel_level = @fuel_capacity * (@current_fuel.to_f * 0.01)
+	def switch_power
+		if @power == "off"
+			@power = "on"
+		elsif @power == "on"
+			@power = "off"
+		end
 	end
 
-	def speed_change(speed)
-		@velocity = speed
+	def change_resolution(resolution)
+		@resolution = resolution
+		puts "Your updated resolution is #{@resolution}p"
 	end
-
 end
 
-armada = []
+tv_array = []
+# changhong = TV.new("Changhong", 1080, "40")
+# tv_array << changhong
+# changhong.mount_tv
+# changhong.switch_power
+# changhong.change_resolution(720)
+tv_choice = nil
 
-armada << SpaceShip.new("Orion", "X21", 100, 1000)
-
-ships.times do 
-	puts "What is the ships name?"
-	name = gets.chomp
+until tv_choice == "cancel"
+	puts "Would you like to view a TV? (Type \"cancel\" to exit)"
+	tv_choice = gets.chomp.downcase
 	puts ' '
 
-	puts "What is its model number?"
-	model = gets.chomp
-	puts ' '
+	if tv_choice == "yes" || tv_choice == "y"
+		puts "What TV model would you like to look at today?"
+		tv = gets.chomp
+		puts ' '
 
-	puts "What is its fuel level? (0-100)"
-	fuel = gets.chomp.to_i
-	puts ' '
+		puts "What resolution? (in pixels)"
+		reso = gets.chomp.to_i
+		puts ' '
 
-	puts "How many pounds of fuel can it hold?"
-	capacity = gets.chomp.to_i
-	puts ' '
+		puts "What size? (in inches)"
+		size = gets.chomp
+		puts ' '
 
-	armada << SpaceShip.new(name, model, fuel, capacity)
+		tv_array << TV.new(tv, reso, size)
+	elsif tv_choice == "no" || tv_choice == "n"
+		puts "Thanks for stopping by!"
+		puts ' '
+		tv_choice = "cancel"
+		puts "Today you checked out the following TV(s):"
+		tv_array.each { |tv| puts "The #{tv.size}inch #{tv.model} with #{tv.resolution}p resolution" }
+	elsif tv_choice == "cancel"
+		exit(0)			
+	else
+		puts "I didn't quite catch that."
+		puts ' '
+	end
 end
-
-armada[0].current_fuel = 80
-puts "#{armada[0].ship_name} has #{armada[0].check_fuel} lbs of fuel left."
-
-puts ' '
-
-armada.each { |ship|
-puts "The #{ship.ship_name}-#{ship.ship_model} class ship uses #{ship.fuel_type.downcase}.
-It holds #{ship.fuel_capacity}lbs of fuel and is #{ship.current_fuel}\% fueled."
-}
-
-puts ' '
