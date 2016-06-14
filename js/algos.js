@@ -25,3 +25,25 @@ test_array.forEach(length_check);
 console.log("Now let's test the second array:");
 var longest = ""; //had to clear variable to prevent including previous longest
 test_array2.forEach(length_check);
+
+// create sample hashes for testing
+// define function that takes two hashes
+// loop through each key comparing it to each key (another loop) of second hashes
+// print statement if true
+// print different statement if false
+
+hash1 = {
+	name: "Alex",
+	age: 29
+};
+
+hash2 = {
+	name: "James",
+	gender: "Male"
+};
+
+hash3 = {
+	gender: "female",
+	condition: "healthy"
+};
+
