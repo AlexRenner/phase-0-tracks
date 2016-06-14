@@ -26,7 +26,7 @@ console.log(longest_array);
 console.log(" ");
 
 console.log("Now let's test the second array:");
-var longest = ""; //had to clear variable to prevent including previous longest
+longest = ""; //had to clear variable to prevent including previous longest
 test_array2.forEach(length_check);
 console.log(longest_array);
 console.log(" ");
@@ -99,3 +99,7 @@ function multiple_words(times) {
 
 multiple_words(10);
 console.log(random_array);
+
+longest = "";
+random_array.forEach(length_check);
+console.log("The longest word(s) in your array are " + longest_array + ".");
