@@ -18,13 +18,18 @@ function length_check(string) {
 	} else if (string.length === longest.length) {
 		longest_array.push(string);
 	}
-	console.log(longest_array);
+	// console.log(longest_array);
 }
 
 test_array.forEach(length_check);
+console.log(longest_array);
+console.log(" ");
+
 console.log("Now let's test the second array:");
 var longest = ""; //had to clear variable to prevent including previous longest
 test_array2.forEach(length_check);
+console.log(longest_array);
+console.log(" ");
 
 // create sample hashes for testing
 // define function that takes two hashes
@@ -48,12 +53,12 @@ hash3 = {
 };
 
 function hash_comparison(first_hash, second_hash) {
-	for (var key1 in first_hash) {
-		for (var key2 in second_hash) {
-			if (key1 === key2) {
-				console.log(key1 + " is equal to " + key2 + ": True");
+	for (var first_key in first_hash) {
+		for (var second_key in second_hash) {
+			if (first_key === second_key) {
+				console.log(first_key + " is equal to " + second_key + ": True");
 			}	else {
-				console.log(key1 + " is equal to " + key2 + ": False");
+				console.log(first_key + " is equal to " + second_key + ": False");
 			}
 		}
 	}
@@ -62,3 +67,35 @@ function hash_comparison(first_hash, second_hash) {
 hash_comparison(hash1, hash2);
 console.log(" ");
 hash_comparison(hash2, hash3);
+console.log(" ");
+
+// create a function that takes an integer
+// that integer runs a random number generator x amount of times
+// each time the random number generator runs it should grab that many random letters
+// the letters should be joined into a string
+// then the string should be pushed into an array
+// once the array has been fully populated it should be run through function length_check
+var random_array = [];
+
+function word_generator() {
+	var random_number = Math.floor((Math.random()*10)+1);
+	// console.log(random_number);
+	var random_word = "";
+	// random_array = [];
+	var letter_array = [];
+	var the_abcs = "abcdefghijklmnopqrstuvwxyz";
+	for (var i = 0; i < random_number; i++) {
+		letter_array.push(the_abcs.charAt(Math.floor((Math.random()*the_abcs.length)+1)));
+	};
+	console.log(letter_array);
+	random_array.push(letter_array.join(""));
+};
+
+function multiple_words(times) {
+	for (var i = 0; i < times; i++) {
+		word_generator();
+	};
+};
+
+multiple_words(10);
+console.log(random_array);
