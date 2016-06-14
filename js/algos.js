@@ -47,3 +47,18 @@ hash3 = {
 	condition: "healthy"
 };
 
+function hash_comparison(first_hash, second_hash) {
+	for (var key1 in first_hash) {
+		for (var key2 in second_hash) {
+			if (key1 === key2) {
+				console.log(key1 + " is equal to " + key2 + ": True");
+			}	else {
+				console.log(key1 + " is equal to " + key2 + ": False");
+			}
+		}
+	}
+};
+
+hash_comparison(hash1, hash2);
+console.log(" ");
+hash_comparison(hash2, hash3);
