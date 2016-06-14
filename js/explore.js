@@ -13,4 +13,6 @@ function reverse(string) {
 	for (var index = string.length; index > 0; i--) {
 		letter_array.push(string[index-1]);
 	}
-}
+
+	console.log(letter_array)
+};
