@@ -1,25 +1,16 @@
-// declare string
-// write loop
-// push each letter from last to first
-// join array into new string
+// create a string to be reversed
+// define method for reversing
+// break string into an array of letters
+// reverse the array
+// join the array of letters back into new string
+// print new string and old string to console (make it pretty)
 
-var str_fwd = "In reverse!";
-var letters = [];
+var my_string = "Take it back now y'all!"
 
-function reverse(str_fwd) {
+function reverse(string) {
+	var letter_array = [];
 
-	for (var i = str_fwd.length; i > 0; i--) {
-		letters.push(str_fwd[i-1]);
-
+	for (var index = string.length; index > 0; i--) {
+		letter_array.push(string[index-1]);
 	}
-}
-
-reverse(str_fwd);
-var str_bkwd = letters.join("");
-
-if (str_fwd != null) {
-	console.log(str_bkwd);
-}
-else {
-	console.log("The string is empty!");
 }
