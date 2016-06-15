@@ -1,46 +1,54 @@
-var colors = ["blue", "green", "yellow", "orange"];
-var names = ["joe", "bob", "jane", "doe"];
+var colors = ["blue", "green", "orange", "yellow"];
+var names = ["Charlie", "Mr. Ed", "Glue", "Crazy Horse"];
 
-colors.push("red");
-names.push("jill");
+colors.push("Red");
+names.push("Jumper");
 
-// declare a method that takes two arrays
-// declare new object
-// if statement to compare array.length
-// write loop to push name=>colors into new object
-// else yell at user
+var horse = {name: 'lightning', age: 32, color: 'palomino'};
 
-function push_info(name_array, color_array) {
-  var horseData = {};
-  if (name_array.length === color_array.length) {
-   for (var i = 0; i < name_array.length; i++) {
-     horseData[name_array[i]] = color_array[i];
-     // console.log(horseData);
+var newHorses = {};
+
+function horseBuilder(name, color) {
+ if (name.length === color.length) {
+   for (var i = 0; i < name.length; i++) {
+   newHorses[name[i]] = color[i];
+     console.log(newHorses);
    }
-  } else {
-    console.log("Lengths of arrays don't match!");
-  }
+ } else {
+   console.log("Array's do not match");
+ }
 };
 
-console.log(push_info(names, colors));
+horseBuilder(names, colors);
 
-function car(make, model, year) {
+// Make a loop with a counter that adds the arrays index that is equal to the current counter to 
+// both the key and value of the newHorse object
+
+function Car(make, model, year) {
   
   this.make = make;
   this.model = model;
   this.year = year;
   
-  this.revItUp = function() {console.log("VROOOOOOOM");};
+  console.log("Constructing car:", this);
   
-  console.log("CAR IS BEING BUILT...");
+  this.create_message = function() {
+    console.log("Created " + this.year +" "+ this.make +" "+ this.model + " and it is " + (2016-this.year) + " years old.");
+  };
 };
 
-var paul = new car("chevy", "impala", 2007);
-console.log(paul);
-paul.revItUp();
+var paul = new Car("Chevy", "Impala", 2007);
+var sean = new Car("Ford", "Focus", 2013);
 
-var tabatha = new car("chevy", "cobalt", 2009);
-console.log(tabatha);
+function currentCar(userName, instance) {
+  console.log(userName + "'s " + instance.make +" "+ instance.year +" "+ instance.model + " is his current car.");
+};
 
-var pam = new car("chevy", "malibu", 1999);
-console.log(pam);
+currentCar("Alex", paul);
+currentCar("Sean", sean);
+
+paul.create_message();
+sean.create_message();
+
+// console.log("Alex's " + paul.make +" "+ paul.year +" "+ paul.model + " is his current car.");
+// console.log(paul);
