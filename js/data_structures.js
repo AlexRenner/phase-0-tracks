@@ -20,6 +20,7 @@ function horseBuilder(name, color) {
 };
 
 horseBuilder(names, colors);
+
 // Make a loop with a counter that adds the arrays index that is equal to the current counter to 
 // both the key and value of the newHorse object
 
@@ -31,7 +32,9 @@ function Car(make, model, year) {
   
   console.log("Constructing car:", this);
   
-  
+  this.create_message = function() {
+    console.log("Created " + this.year +" "+ this.make +" "+ this.model + " and it is " + (2016-this.year) + " years old.");
+  };
 };
 
 var paul = new Car("Chevy", "Impala", 2007);
@@ -43,5 +46,9 @@ function currentCar(userName, instance) {
 
 currentCar("Alex", paul);
 currentCar("Sean", sean);
+
+paul.create_message();
+sean.create_message();
+
 // console.log("Alex's " + paul.make +" "+ paul.year +" "+ paul.model + " is his current car.");
 // console.log(paul);
