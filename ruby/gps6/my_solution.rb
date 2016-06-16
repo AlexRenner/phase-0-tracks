@@ -96,3 +96,21 @@ VirusPredictor.all_fifty
 #=======================================================================
 # Reflection Section
 
+# The main difference between the two syntaxes that I see is that the string to hash
+# pair uses => while the value hash uses : which out creates a symbol for the key
+
+# require_relative uses a file in relation to a program's location while require uses
+# a directory address
+
+# hashes can be iterated through with a variety of methods including .each and .map
+# and can also be iterated through in check methods like .has_key? or .has_value? 
+# to revieve a boolean output
+
+# the variables were all instance variables so there was no need to pass them into
+# the methods since their scope allowed them to be accessed anywhere whithin 
+# the class instance
+
+# I was unclear about scope and its definition. I understand the use of scope in 
+# practice (usually hehe) but I have always had issues with the terminology and wording my
+# thoughts in a way that is coherent to everyone else as I tend to missuse words
+# and terms.  Work in progress!
