@@ -1,0 +1,66 @@
+Just as an FYI I didn't realize all my games would be false on the boolean value before I created the column.  WoopS!
+
+SELECT * FROM games;
+>
+1|Fable 3|false|1
+2|Fallout 4|false|2
+3|Doom BFG Edition|false|1
+4|Diablo 3: Reaper of Souls|false|1
+5|Dishonored|false|2
+6|Tropico 4|false|1
+
+SELECT * FROM consoles;
+>
+1|Xbox 360
+2|Xbox One
+
+UPDATE games SET name="Dishonored: Definitive Edition" WHERE id=5;
+>
+No output
+
+SELECT games.name, consoles.console FROM games JOIN consoles ON games.console_id = consoles.id;
+>
+Fable 3|Xbox 360
+Fallout 4|Xbox One
+Doom BFG Edition|Xbox 360
+Diablo 3: Reaper of Souls|Xbox 360
+Dishonored: Definitive Edition|Xbox One
+Tropico 4|Xbox 360
+
+SELECT games.name, games."nc-17?", consoles.console FROM games JOIN consoles ON games.console_id = consoles.id;
+>
+Fable 3|false|Xbox 360
+Fallout 4|false|Xbox One
+Doom BFG Edition|false|Xbox 360
+Diablo 3: Reaper of Souls|false|Xbox 360
+Dishonored: Definitive Edition|false|Xbox One
+Tropico 4|false|Xbox 360
+
+SELECT games.id, games.name, games."nc-17?", consoles.console FROM games JOIN consoles ON games.console_id = consoles.id;
+>
+1|Fable 3|false|Xbox 360
+2|Fallout 4|false|Xbox One
+3|Doom BFG Edition|false|Xbox 360
+4|Diablo 3: Reaper of Souls|false|Xbox 360
+5|Dishonored: Definitive Edition|false|Xbox One
+6|Tropico 4|false|Xbox 360
+
+DELETE FROM games WHERE name="Fable 3";
+>
+No output
+
+SELECT games.id, games.name, games."nc-17?", consoles.console FROM games JOIN consoles ON games.console_id = consoles.id;
+>
+2|Fallout 4|false|Xbox One
+3|Doom BFG Edition|false|Xbox 360
+4|Diablo 3: Reaper of Souls|false|Xbox 360
+5|Dishonored: Definitive Edition|false|Xbox One
+6|Tropico 4|false|Xbox 360
+
+SELECT games.id, games.name, games."nc-17?", consoles.console FROM games LEFT JOIN consoles ON games.console_id = consoles.id;
+>  (Didn't seem to do anything different)
+2|Fallout 4|false|Xbox One
+3|Doom BFG Edition|false|Xbox 360
+4|Diablo 3: Reaper of Souls|false|Xbox 360
+5|Dishonored: Definitive Edition|false|Xbox One
+6|Tropico 4|false|Xbox 360

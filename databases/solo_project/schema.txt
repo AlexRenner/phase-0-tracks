@@ -1,0 +1,7 @@
+games               |consoles
+--------------------+--------------------
+id (primary key)    |
+name (varchar)      |
+nc-17? (boolean)    |
+console_id (int) ---> id (primary key)
+                    | console (varchar)
