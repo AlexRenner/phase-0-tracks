@@ -1,0 +1,24 @@
+EXAMPLE:   SELECT players.name, teams.name FROM players JOIN teams ON players.team_id = teams.id;
+
+.tables
+>
+businesses  reviews     users
+
+SELECT * FROM reviews JOIN businesses ON reviews.business_id = businesses.id JOIN users ON reviews.user_id = users.id;
+>
+1|1|Janet is a bad plumber|1|2|1|Plumbing by Janet|2|Merryl|Streepman
+2|5|Their laughter yoga is particular hilarious! Love the live performances.|3|1|3|Lotus Yoga|1|Steven|Wonder
+3|4|Great venue, moderate food|2|3|2|The Beagle Nightclub|3|Denzel|George
+4|3|Merryl is a liar!|1|3|1|Plumbing by Janet|3|Denzel|George
+
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comments FROM reviews JOIN businesses ON reviews.business_id = businesses.id JOIN users ON reviews.user_id = users.id;
+>
+Merryl|Streepman|Plumbing by Janet|1|Janet is a bad plumber
+Steven|Wonder|Lotus Yoga|5|Their laughter yoga is particular hilarious! Love the live performances.
+Denzel|George|The Beagle Nightclub|4|Great venue, moderate food
+Denzel|George|Plumbing by Janet|3|Merryl is a liar!
+
+SELECT * FROM reviews JOIN businesses ON reviews.business_id = businesses.id JOIN users ON reviews.user_id = users.id WHERE businesses.name = "Plumbing by Janet";
+>
+1|1|Janet is a bad plumber|1|2|1|Plumbing by Janet|2|Merryl|Streepman
+4|3|Merryl is a liar!|1|3|1|Plumbing by Janet|3|Denzel|George
